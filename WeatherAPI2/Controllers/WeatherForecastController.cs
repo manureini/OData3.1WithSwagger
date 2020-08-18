@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -22,6 +23,14 @@ namespace WeatherAPI2.Controllers
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
+        }
+
+        [HttpGet]
+        [ODataRoute(nameof(Get42))]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public IActionResult Get42()
+        {
+            return Ok(42);
         }
 
         /// <summary>
